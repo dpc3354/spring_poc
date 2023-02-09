@@ -49,10 +49,11 @@ public class SecurityConfig {
 
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->
-                        //authorize.anyRequest().authenticated()
-                                authorize.requestMatchers(HttpMethod.GET, "/user/*").permitAll()
-                                        .requestMatchers("/user/*").permitAll()
-                                        .anyRequest().authenticated()
+                        authorize.anyRequest().permitAll()
+//                                  authorize.anyRequest().authenticated()
+//                                authorize.requestMatchers(HttpMethod.GET, "/user/*").permitAll()
+//                                        .requestMatchers("/user/*").permitAll()
+//                                        .anyRequest().authenticated()
                 ).exceptionHandling(exception -> exception.authenticationEntryPoint(jwtAuthenticationEntryPoint))
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
